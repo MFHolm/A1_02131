@@ -3,12 +3,9 @@
 #include "sensor.h"
 
 void lowPass(int* input, int* output){
-	int result = 2*output[0]-output[1]+(1/32.0)*(input[0]-2*input[6]+input[12]);
+	int result = 2*output[0]-output[1]+(((input[0]-2*input[6]+input[12]))/32);
 	insertArray(output,32,result);
 	printf("%d\n",result);
-
-
-
 }
 
 void highPass(){
