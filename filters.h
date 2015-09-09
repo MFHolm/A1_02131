@@ -1,0 +1,2 @@
+int lowpass();
+int insertArray();
