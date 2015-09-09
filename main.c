@@ -4,4 +4,6 @@
 
 int main() {
 //the dankest of tests
+	int j = 100;
+
 }
