@@ -10,32 +10,23 @@ int main() {
 	static const char filename[] = "ECG.txt";
 	FILE *file = fopen(filename,"r");
 
-	int input[12];
-	int afterLowpass[32];
-
-	int counter = 0;
+	int input[12] = {0};
+	int afterLowpass[32] = {0};
 	int x;
-
+	int ret;
+	for(int i;i<12;i++)
+		printf("%d\n",x,afterLowpass[i]);
 	while (!feof(file)){
-
-		x = getNextData(file);
-		if(counter <= 12){
-			input[12-counter] = x;
-			counter++;
-		}else if(counter == 13){
-			afterLowpass[0]=input[0];
-			afterLowpass[1]=input[1];
-			counter++;
-		} else {
+			x = getNextData(file);
 			insertArray(input,12,x);
-			lowPass(input,afterLowpass);
+			ret = lowPass(input,afterLowpass);
+			insertArray(afterLowpass,32, ret);
+			//printf("%d %d\n",x,afterLowpass[0]);
+
 		}
 
 
 	}
 
-
-
-}
 
 
