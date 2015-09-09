@@ -10,8 +10,8 @@ int main() {
 	static const char filename[] = "ECG.txt";
 	FILE *file = fopen(filename,"r");
 
-	int input[12] = {0};
-	int afterLowpass[32] = {0};
+	int input[13] = {0};
+	int afterLowpass[33] = {0};
 	//for (int i = 0; i < 12; i++) {
 	//	printf("%d\n", input[i]);
 	//}
@@ -21,7 +21,7 @@ int main() {
 	while (!feof(file)){
 
 		x = getNextData(file);
-		insertArray(input,12,x);
+		insertArray(input,13,x);
 		lowPass(input,afterLowpass);
 	}
 
