@@ -14,6 +14,6 @@ int lowpass() {
 	FILE *file = fopen(filename, "r");
 	int value;
 	fscanf(file, "%i", &value);
-	//help
+
 	return value;
 }
