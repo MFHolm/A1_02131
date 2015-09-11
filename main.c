@@ -13,14 +13,33 @@ int main() {
 
 	int input[13] = {0};
 	int afterLowpass[33] = {0};
+	int afterHighpass[5] = {0};
+	int afterDerivative = 0;
+	int afterSquare[30] = {0};
 
 	int x;
-	while (!feof(file)){
+	
+	char max[100];
+
+	while(fgets(max,100,file)){
 		x = getNextData(file);
 		insertArray(input,13,x);
 		lowPass(input,afterLowpass);
+		highPass(afterLowpass,afterHighpass);
+		afterDerivative = derivative(afterHighpass);
+		square(afterDerivative,afterSquare);
+		mWindowIntegration(afterSquare);
+	 }
+	/*
+	do{
+		x = getNextData(file);
+		insertArray(input,13,x);
+		lowPass(input,afterLowpass);
+		highPass(afterLowpass,afterHighpass);
+		//afterDerivative = derivative(afterHighpass);
 
-	}
+		//square(afterDerivative);
+	 }while (!feof(file));*/
 }
 
 

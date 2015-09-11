@@ -3,7 +3,7 @@
 #include "sensor.h"
 
 int getNextData(FILE* file) {
-		int value;
+	int value;
 		fscanf(file,"%i",&value);
 
 		return value;
