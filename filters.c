@@ -30,12 +30,13 @@ void square(int input, int* output) {
 	insertArray(output, 30, result);
 }
 
-void mWindowIntegration(int* input){
+void mWindowIntegration(int* input, int* output){
 	int result = 0;
 	for(int i = 29; i >= 1; i--){
 		result+=input[i];
 	}
 	result = result/30;
+	insertArray(output, 3, result);
 	//printf("%d\n",result);
 }
 

@@ -15,6 +15,7 @@ int main() {
 	int afterHighpass[5] = {0};
 	int afterDerivative = 0;
 	int afterSquare[30] = {0};
+	int afterWindowIntegration[3] = {0};
 
 
 	int x;
@@ -28,8 +29,8 @@ int main() {
 		highPass(afterLowpass,afterHighpass);
 		afterDerivative = derivative(afterHighpass);
 		square(afterDerivative,afterSquare);
-		mWindowIntegration(afterSquare);
-		identifyPeaks(afterSquare);
+		mWindowIntegration(afterSquare, afterWindowIntegration);
+		identifyPeaks(afterWindowIntegration);
 
 	 }
 	/*
