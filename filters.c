@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "sensor.h"
 
 void lowPass(int* input, int* output){
 	int result = 2*output[0]-output[1]+(((input[0]-2*input[6]+input[12]))/32);
@@ -37,13 +36,13 @@ void mWindowIntegration(int* input){
 		result+=input[i];
 	}
 	result = result/30;
-	printf("%d\n",result);
+	//printf("%d\n",result);
 }
 
-void insertArray(int* x,int size, int new){
+void insertArray(int* list,int size, int new){
 	for(int i = size-1; i > 0; i--){
-		x[i]=x[i-1];
+		list[i]=list[i-1];
 	}
-	x[0]=new;
+	list[0]=new;
 
 }

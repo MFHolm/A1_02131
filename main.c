@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "sensor.h"
 #include "filters.h"
-
-
+#include "peaks.h"
 
 
 int main() {
@@ -17,6 +16,7 @@ int main() {
 	int afterDerivative = 0;
 	int afterSquare[30] = {0};
 
+
 	int x;
 	
 	char max[100];
@@ -29,6 +29,8 @@ int main() {
 		afterDerivative = derivative(afterHighpass);
 		square(afterDerivative,afterSquare);
 		mWindowIntegration(afterSquare);
+		identifyPeaks(afterSquare);
+
 	 }
 	/*
 	do{
