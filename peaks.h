@@ -1,0 +1,2 @@
+
+void identifyPeaks(int* input);
