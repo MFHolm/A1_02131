@@ -33,16 +33,7 @@ int main() {
 		identifyPeaks(afterWindowIntegration);
 
 	 }
-	/*
-	do{
-		x = getNextData(file);
-		insertArray(input,13,x);
-		lowPass(input,afterLowpass);
-		highPass(afterLowpass,afterHighpass);
-		//afterDerivative = derivative(afterHighpass);
 
-		//square(afterDerivative);
-	 }while (!feof(file));*/
 }
 
 
