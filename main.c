@@ -21,8 +21,9 @@ int main() {
 	int x;
 	
 	char max[100];
-
+	int counter = 0;
 	while(fgets(max,100,file)){
+		counter++;
 		x = getNextData(file);
 		insertArray(input,13,x);
 		lowPass(input,afterLowpass);
@@ -30,8 +31,9 @@ int main() {
 		afterDerivative = derivative(afterHighpass);
 		square(afterDerivative,afterSquare);
 		mWindowIntegration(afterSquare, afterWindowIntegration);
+		//printf("counter 1: %d\n", counter);
 		identifyPeaks(afterWindowIntegration);
-
+		//printf("counter 2: %d\n", counter);
 	 }
 	/*
 	do{
