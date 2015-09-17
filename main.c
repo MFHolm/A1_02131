@@ -22,7 +22,8 @@ int main() {
 	
 	char max[100];
 
-	while(fgets(max,100,file)){
+	//fgets(max,100,file)
+	while(!feof(file)){
 		x = getNextData(file);
 		insertArray(input,13,x);
 		lowPass(input,afterLowpass);
@@ -30,9 +31,10 @@ int main() {
 		afterDerivative = derivative(afterHighpass);
 		square(afterDerivative,afterSquare);
 		mWindowIntegration(afterSquare, afterWindowIntegration);
-		identifyPeaks(afterWindowIntegration);
+	    //identifyPeaks(afterWindowIntegration);
 
 	 }
+
 
 }
 

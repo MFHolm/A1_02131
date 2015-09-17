@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void insertArray(int* list,int size, int new);
+
+
 void lowPass(int* input, int* output){
 	int result = 2*output[0]-output[1]+(((input[0]-2*input[6]+input[12]))/32);
-
-
 	insertArray(output,33,result);
-
+	//printf("%d\n", result);
 
 }
 
@@ -37,7 +38,7 @@ void mWindowIntegration(int* input, int* output){
 	}
 	result = result/30;
 	insertArray(output, 3, result);
-	//printf("%d\n",result);
+	printf("%d\n",result);
 }
 
 void insertArray(int* list,int size, int new){
