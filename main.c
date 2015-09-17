@@ -33,7 +33,7 @@ int main() {
 		mWindowIntegration(afterSquare, afterWindowIntegration);
 		//printf("counter 1: %d\n", counter);
 		identifyPeaks(afterWindowIntegration);
-		//printf("counter 2: %d\n", counter);
+		//if (counter < 5000) {printf("counter: %d\n", counter);}
 	 }
 
 }
