@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void insertArray(int* list,int size, int new);
+
+
 void lowPass(int* input, int* output){
 	int result = 2*output[0]-output[1]+(((input[0]-2*input[6]+input[12]))/32);
 	insertArray(output,33,result);
@@ -30,7 +33,7 @@ void square(int input, int* output) {
 
 void mWindowIntegration(int* input, int* output){
 	int result = 0;
-	for(int i = 29; i >= 1; i--){
+	for(int i = 29; i >= 0; i--){
 		result+=input[i];
 	}
 	result = result/30;

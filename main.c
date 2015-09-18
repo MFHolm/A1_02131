@@ -22,7 +22,8 @@ int main() {
 	
 	char max[100];
 	int counter = 0;
-	while(fgets(max,100,file)){
+	//fgets(max,100,file)
+	while(!feof(file)){
 		counter++;
 		x = getNextData(file);
 		insertArray(input,13,x);
