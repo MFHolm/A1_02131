@@ -32,9 +32,8 @@ int main() {
 		afterDerivative = derivative(afterHighpass);
 		square(afterDerivative,afterSquare);
 		mWindowIntegration(afterSquare, afterWindowIntegration);
-		//printf("counter 1: %d\n", counter);
 		identifyPeaks(afterWindowIntegration);
-		//if (counter < 5000) {printf("counter: %d\n", counter);}
+		//printOutput();
 	 }
 
 }
