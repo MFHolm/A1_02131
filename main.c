@@ -11,7 +11,7 @@ int main() {
 	start = clock();
 	heartMonitor();
 	end = clock();
-	cpuTimeUsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+	cpuTimeUsed = ((double) ((end - start)) / CLOCKS_PER_SEC ) * 1000;
 	printf("cpu time: %f\n", cpuTimeUsed);
 	return 0;
 

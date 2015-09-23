@@ -5,13 +5,13 @@
 static int SPKF = 0, NPKF = 0, THRESHOLD1 = 0, THRESHOLD2 = 0;
 static int RR_Average1 = 0, RR_Average2 = 0, RR_LOW = 0, RR_HIGH = 0, RR_MISS =0;
 static int counter = 0;
-static int RPeakTime[200] = { 0 };
-static int peakTime[10000] = { 0 };
-static int Rpeaks[200] = { 0 };
+static int lastRpeakTime = 0;
+static int peakTime[10] = { 0 };
+static int latestRpeak= 0;
 static int RecentRR_OK[8] = { 0 };
 static int RecentRR[8] = { 0 };
-static int size = 10000;
-static int peaks[10000] = { 0 };
+static int size = 10;
+static int peaks[10] = { 0 };
 static int pulseCounter = 0;
 static int missCounter = 0;
 static int heartFailureCounter = 0;
@@ -23,7 +23,7 @@ void newPeakAboveThreshold2(int,int);
 void calculatePulse();
 
 void identifyPeaks(int* input) {
-	if (counter - RPeakTime[0] > 500){ //500 samples is 2 seconds
+	if (counter - lastRpeakTime > 500){ //500 samples is 2 seconds
 		printHeartFailure();
 	}
 	int RR;
@@ -31,7 +31,7 @@ void identifyPeaks(int* input) {
 		insertArray(peaks, size, input[1]);
 		insertArray(peakTime, size, counter);
 		if (peaks[0] > THRESHOLD1) {
-			RR = counter - RPeakTime[0];
+			RR = counter - lastRpeakTime;
 		//printf("%d   %d   %d\n", counter, input[1], interval);
 			//printf("RR_LOW: %d    RR_HIGH: %d   RR_MISS: %d\n", RR_LOW, RR_HIGH, RR_MISS);
 			if ((RR > RR_LOW) && (RR < RR_HIGH)) {
@@ -85,9 +85,9 @@ void peakBelowThreshold1() {
 }
 
 void rrCorrectInterval(int interval) {
-	insertArray(Rpeaks, 200, peaks[0]);
-	insertArray(RPeakTime, 200, counter);
-	if(Rpeaks < 2000){
+	latestRpeak = peaks[0];
+	lastRpeakTime = counter;
+	if(latestRpeak < 2000){
 		printPeakWarning();
 	}
 	calculatePulse();
@@ -105,8 +105,8 @@ void rrCorrectInterval(int interval) {
 }
 
 void newPeakAboveThreshold2(int i, int interval) {
-	insertArray(Rpeaks, 200, peaks[i]);
-	insertArray(RPeakTime, 200, peakTime[i]);
+	latestRpeak = peaks[i];
+	lastRpeakTime = peakTime[i];
 	calculatePulse();
 	//printf("%d     %d\n",RPeakTime[0], Rpeaks[0]);
 	SPKF = peaks[i]*0.25 + (SPKF)*0.75;
@@ -124,8 +124,8 @@ void newPeakAboveThreshold2(int i, int interval) {
 void printOutput() {
 
 	printf("Value of peak: %d\nTime of last peak (in samples): %d\nPulse: %d\n\n",
-			Rpeaks[0], RPeakTime[0], pulseCounter);
-	if(Rpeaks < 2000){
+			latestRpeak, lastRpeakTime, pulseCounter);
+	if(latestRpeak < 2000){
 				printPeakWarning();
 		}
 }
