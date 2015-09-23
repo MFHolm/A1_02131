@@ -3,9 +3,22 @@
 #include "sensor.h"
 #include "filters.h"
 #include "peaks.h"
-
+#include <time.h>
 
 int main() {
+	clock_t start, end;
+	double cpuTimeUsed;
+	start = clock();
+	heartMonitor();
+	end = clock();
+	cpuTimeUsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+	printf("cpu time: %f\n", cpuTimeUsed);
+	return 0;
+
+}
+
+void heartMonitor() {
+
 	static const char filename[] = "ECG.txt";
 	FILE *file = fopen(filename,"r");
 
@@ -35,7 +48,4 @@ int main() {
 		identifyPeaks(afterWindowIntegration);
 		//printOutput();
 	 }
-
 }
-
-
