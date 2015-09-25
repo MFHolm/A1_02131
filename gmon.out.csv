@@ -1,0 +1,27 @@
+Hierarchy;Name (location);Samples;Calls;Time/Call;% Time
++-;Summary;2;;;100.0
+  +-;filters.c;1;;;50.0
+  | +-;derivative;0;900001;0ns;0.0
+  | +-;highPass;0;900001;0ns;0.0
+  | +-;lowPass;0;900001;0ns;0.0
+  | +-;mWindowIntegration;1;900001;11ns;50.0
+  | | +-;mWindowIntegration (filters.c:33);1;;;50.0
+  | |   +-;0x400998;1;;;50.0
+  | +-;square;0;900001;0ns;0.0
+  +-;helperMethods.c;0;;;0.0
+  | +-;averageOf;0;1280;0ns;0.0
+  | +-;insertArray;0;4529431;0ns;0.0
+  +-;main.c;1;;;50.0
+  | +-;main;1;0;;50.0
+  |   +-;main (main.c:72);1;;;50.0
+  |     +-;0x400cc4;1;;;50.0
+  +-;peaks.c;0;;;0.0
+  | +-;calculatePulse;0;649;0ns;0.0
+  | +-;identifyPeaks;0;900001;0ns;0.0
+  | +-;newPeakAboveThreshold2;0;18;0ns;0.0
+  | +-;peakBelowThreshold1;0;10316;0ns;0.0
+  | +-;printOutput;0;649;0ns;0.0
+  | +-;printPeakWarning;0;10;0ns;0.0
+  | +-;rrCorrectInterval;0;631;0ns;0.0
+  +-;sensor.c;0;;;0.0
+    +-;getNextData;0;900001;0ns;0.0
